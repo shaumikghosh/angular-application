@@ -1,0 +1,137 @@
+<div class="add-address-area">
+    <div class="add-address container">
+        <nav>
+            <ul>
+                <!--
+                    displying full_name and avatar which is coming by props from contacts view
+                -->
+                <li><img src="{{addressComponent.contact.avatar}}" />{{addressComponent.contact.full_name}}</li>
+            </ul>
+        </nav>
+        <!--
+            its called angular template driven form
+        -->
+        <div class="address-form">
+            <!--
+                form1: it will in use when the contact already have address list 
+            -->
+            <form #updateAddressForm="ngForm" (ngSubmit)="updateAddress(updateAddressForm.value, addressComponent.contact.id)" *ngIf="addressComponent.addresses.length > 0">
+                <!-- form field will be increadsed accordinmg to addressComponent.addresses length -->
+                <div class="forms" *ngFor="let address of addressComponent.addresses; index as i; first as f">
+                    <input type="hidden" value="{{address.id}}" name="addressId_{{i}}" ngModel={{address.id}}/>
+                    <h4 class="mb-4">Address #{{i+1}}</h4>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Street 1 <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <i *ngIf="f === true" class="fa fa-address-card"></i>
+                                <input name="street1_{{i}}" type="text" class="form-control col text-secondary" placeholder="Street 1 *"
+                                    [value]="address.street1" *ngIf="address.street1 !== ''" ngModel="{{address.street1}}"/>
+                                <input name="street1_{{i}}" type="text" class="form-control col text-secondary" placeholder="Street 1 *" *ngIf="address.street1 === ''" ngModel/>
+                            </div>
+                            <div class="col-4">
+                                <!--
+                                    button for remove increment field from form
+                                -->
+                                <button (click)="removeItem(address.id)" type="button" class="btn"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Street 2 <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <input name="street2_{{i}}" type="text" class="form-control col text-secondary" placeholder="Street 2 *"
+                                    [value]="address.street2" *ngIf="address.street1 !== ''" ngModel="{{address.street2}}"/>
+                                <input name="street2_{{i}}" type="text" class="form-control col text-secondary" placeholder="Street 2 *" *ngIf="address.street1 === ''" ngModel/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Town <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <input name="town_{{i}}" type="text" class="form-control col text-secondary" placeholder="Town *"
+                                    [value]="address.town" *ngIf="address.street1 !== ''" ngModel="{{address.town}}"/>
+                                <input name="town_{{i}}" type="text" class="form-control col text-secondary" placeholder="Town *" *ngIf="address.street1 === ''" ngModel/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Country <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <select name="country_{{i}}" *ngIf="address.street1 !== ''" class="form-select" aria-label="Default select example" ngModel="{{address.country}}">
+                                    <option *ngFor="let country of addressComponent.countries" [value]="country.iso2"
+                                        [selected]="country.iso2===address.country">{{country.name}}</option>
+                                </select>
+                                <select name="country_{{i}}" *ngIf="address.street1 === ''" class="form-select" aria-label="Default select example" ngModel>
+                                    <option *ngFor="let country of addressComponent.countries" [value]="country.iso2">{{country.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <button (click)="addForm2()" type="button" class="btn1 btn btn-secondary"><span>+</span> Add
+                        Address</button>
+                    <button class="btn2 btn btn-light"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+
+            <!--
+                form2: it will be in use while contact has no adress inserted yet
+            -->
+            <form #addressForm="ngForm" (ngSubmit)="addNewAddress(addressForm.value, addressComponent.contact.id)" *ngIf="addressComponent.addresses.length === 0">
+                <!--form field will be increased according to its addressComponent.formSize, mostly the value will temporary-->
+                <div class="forms" *ngFor="let address of addressComponent.formSize; index as i; first as f">
+                    <input type="hidden" name="userId_{{address}}" ngModel value="{{addressComponent.contact.id}}"/>
+                    <h4 class="mb-4">Address #{{i+1}}</h4>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Street 1 <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <i *ngIf="f === true" class="fa fa-address-card"></i>
+                                <input name="street1_{{address}}" ngModel type="text" class="form-control col text-secondary" placeholder="Street 1 *" />
+                            </div>
+                            <div class="col-4">
+                                <button *ngIf="f !== true" (click)="removeForm(address)" type="button" class="btn"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Street 2 <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <input name="street2_{{address}}" ngModel type="text" class="form-control col text-secondary" placeholder="Street 2 *"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Town <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <input name="town_{{address}}" ngModel type="text" class="form-control col text-secondary" placeholder="Town *" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="text-secondary" for="exampleFormControlInput1">Country <span>*</span></label>
+                        <div class="input-group">
+                            <div class="col-8">
+                                <select ngModel name="country_{{address}}" class="form-select" aria-label="Default select example">
+                                    <option *ngFor="let country of addressComponent.countries" [value]="country.iso2">{{country.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <button (click)="addForm()" type="button" class="btn1 btn btn-secondary"><span>+</span> Add
+                        Address</button>
+                    <button class="btn2 btn btn-light"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

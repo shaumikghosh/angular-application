@@ -1,0 +1,102 @@
+.add-address-area {
+    .add-address {
+        padding-top: 30px;
+        nav{
+            ul{
+                padding-left: 0;
+                li{
+                    list-style: none;
+                    font-size: 25px;
+                    font-weight: bold;
+                    img{
+                        width: 100px;
+                        border-radius: 50%;
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .address-form {
+        form{
+            .forms{
+                .form-group{
+                    label {
+                        color: #4153B7;
+                        font-weight: 600;
+                        span{
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+                    }
+                    .input-group{
+                        .col-4{
+                            .btn {
+                                position:unset;
+                                border-radius: 0px;
+                                border: none;
+                                width: 100px;
+                                height: 40px;
+                                i{
+                                    font-size: 25px;
+                                    padding: 2px 4px 2px 4px;
+                                }
+                            }
+                        }
+                        .col-8 {
+                            position: relative;
+                            .form-control{
+                                border-left: none;
+                                border-right: none;
+                                border-top: none;
+                                border-radius: 0px;
+                                padding: 0px;
+                                height: 40px;
+                            }
+                            :focus{
+                                border-bottom: 2px solid #4153B7;
+                                outline: 0;
+                                box-shadow: none;
+                                font-weight: 600;
+                                color: #000000;
+                            }
+                            .form-select{
+                                border-left: none;
+                                border-right: none;
+                                border-top: none;
+                                border-radius: 0px;
+                                padding: 0px;
+                                height: 40px;
+                            }
+                            i{
+                                position: absolute;
+                                right: 5px;
+                                top: 10px;
+                                font-size: 22px;
+                                color: #ABABAB;
+                            }
+                        }
+                    }
+                }
+            }
+            .form-group{
+                .btn1 {
+                    background-color: #E0E0E0;
+                    border: none;
+                    color: #000;
+                    border-radius: 0;
+                }
+                .btn2 {
+                    border: none;
+                    color: #9E9E9E;
+                    border-radius: 0;
+                    margin-left: 5px;;
+                }
+                .btn2:hover{
+                    background-color: #E0E0E0;
+                    color: black;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+form{
+    margin-top: 50px;
+    .form-group{
+        label {
+            color: #4153B7;
+            font-weight: 600;
+            span{
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+        .input-group{
+            .col-4{
+                .btn {
+                    position:unset;
+                    margin-left: 15px;
+                    background-color: #E0E0E0;
+                    border-radius: 0px;
+                    border: none;
+                    width: 100px;
+                    height: 40px;
+                    i{
+                        font-size: 20px;
+                        border: 2px solid;
+                        padding: 2px 4px 2px 4px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            .col-8 {
+                .form-control{
+                    border-left: none;
+                    border-right: none;
+                    border-top: none;
+                    border-radius: 0px;
+                    padding: 0px;
+                    height: 40px;
+                }
+                :focus{
+                    border-bottom: 2px solid #4153B7;
+                    outline: 0;
+                    box-shadow: none;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

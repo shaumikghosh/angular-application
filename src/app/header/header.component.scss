@@ -1,0 +1,21 @@
+.header-area{
+    .header{
+        background-color: #4153B7 !important;
+        .header-item {
+            display: flex;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .header-area{
+        .header{
+            .header-item {
+                display: block;
+                .navbar-toggler {
+                    border-color: #4153B7;
+                }
+            }
+        }
+    }
+  }

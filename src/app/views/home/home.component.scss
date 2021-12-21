@@ -1,0 +1,20 @@
+.card {
+    border-radius: 0px !important;
+    background-color: whitesmoke;
+    margin-top: 20px;
+    border-radius: 0px !important;
+    box-shadow: -8px 5px 15px 0px lightgrey !important;
+    .card-body{
+        padding-top: 10px !important;
+        .container {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            h5{
+                color: #8A8A8A;
+            }
+            p{
+                font-style: italic;
+            }
+        }
+    }
+}

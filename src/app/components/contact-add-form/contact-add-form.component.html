@@ -1,0 +1,16 @@
+<!--
+    angular reactive form is used here to get contact data from user and add to conatct table in database
+-->
+<form [formGroup]="addContactform" (ngSubmit)="addContact()">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">New Contact <span class="text-danger">*</span></label>
+        <div class="input-group">
+            <div class="col-8">
+                <input type="text" class="form-control col" placeholder="New Contact *" #element (keyup)="cFormElement(element)" formControlName="newContact"/>
+            </div>
+            <div class="col-4">
+                <button type="submit" #addButton class="btn btn-info"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+</form>

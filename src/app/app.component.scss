@@ -1,0 +1,13 @@
+.application-body{
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 100vh;
+}
+
+@media only screen and (max-width: 425px) {
+    .application-body{
+        background-color: #ffffff;
+        width: 100%;
+        min-height: 100vh;
+    }
+}

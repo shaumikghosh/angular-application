@@ -1,0 +1,13 @@
+<!--
+    hidesidebar() is initialized to close the sidebar once the targeted action is done 
+-->
+<div class="sidebar-area" (click)="hideSidebar()">
+    <div class="sidebar">
+        <nav>
+            <ul>
+                <li><a (click)="hideSidebar()" routerLink="/"><i class="fa fa-home"></i> Home</a></li>
+                <li><a (click)="hideSidebar()" routerLink="/contacts"><i class="fa fa-id-badge"></i> Contacts</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

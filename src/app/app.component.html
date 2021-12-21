@@ -1,0 +1,11 @@
+<!-- 
+  (expandSidebarNow)="expandSidebarNow($event)" 
+  this line is used to call function from child to parent component
+  it''s used for sidebar expand and collaspe on mobile and tab devices
+  the changes is being applied to app-sider component
+-->
+<app-header (expandSidebarNow)="expandSidebarNow($event)"></app-header>
+<div class="application-body container-fluid">
+  <router-outlet></router-outlet>
+</div>
+<app-sidebar *ngIf="expandSidebar === true" (closeSidebarNow)="closeSidebarNow($event)"></app-sidebar>

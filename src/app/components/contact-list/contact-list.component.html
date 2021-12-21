@@ -1,0 +1,13 @@
+<!--
+    with *ngIf there is a logic binded.
+    some api has avatar url but newly addted contact has no avatar
+    so its a logic to display both cdontact which have avatar and which have no avatar
+    when some body click on contact (click)="contactInfo(id)" then it will display address form fiels
+    in that case id will help the detect relational field from api
+-->
+<ul>
+    <li *ngIf="avatar !== '';else emptyAvatar" (click)="contactInfo(id)"><img src="{{avatar}}"/> {{fullName}}</li>
+    <ng-template #emptyAvatar>
+        <li (click)="contactInfo(id)"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFQ-u7OXNdiZAq9W0RfIrlZM3cMYiHRa7Bwb-kzyb5W0vd5xQYx9JSbQCkX70UWUbfUaQ&usqp=CAU"/> {{fullName}}</li>
+    </ng-template>
+</ul>
